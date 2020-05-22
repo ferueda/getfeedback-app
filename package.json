@@ -1,15 +1,19 @@
 {
-  "name": "getfeedback",
+  "name": "getfeedback-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "watch": "nodemon && start"
   },
   "keywords": [],
   "author": "Felipe Rueda",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
