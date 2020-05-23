@@ -1,12 +1,13 @@
+const authRoutes = require('express').Router();
 const passport = require('passport');
 
-module.exports = (app) => {
-  app.get(
-    '/auth/google',
-    passport.authenticate('google', {
-      scope: ['profile', 'email'],
-    })
-  );
+authRoutes.get(
+  '/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email'],
+  })
+);
 
-  app.get('/auth/google/callback', passport.authenticate('google'));
-};
+authRoutes.get('/google/callback', passport.authenticate('google'));
+
+module.exports = authRoutes;
