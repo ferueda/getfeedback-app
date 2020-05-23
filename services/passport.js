@@ -5,6 +5,16 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users');
 
+passport.serializeUser((user, done) => {
+  //this id is the mongoDB ID, not the google ID.
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  const user = await User.findById(id);
+  done(null, user);
+});
+
 passport.use(
   new GoogleStrategy(
     {
@@ -21,8 +31,8 @@ passport.use(
             googleID: profile.id,
           });
 
-          const returnedUser = await newUser.save();
-          done(null, returnedUser);
+          const savedUser = await newUser.save();
+          done(null, savedUser);
         }
         done(null, existingUser);
       } catch (e) {
