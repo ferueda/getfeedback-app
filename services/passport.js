@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
@@ -35,8 +36,37 @@ passport.use(
           done(null, savedUser);
         }
         done(null, existingUser);
-      } catch (e) {
-        console.log(e.message);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+  )
+);
+
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: keys.facebookClientID,
+      clientSecret: keys.facebookClientSecret,
+      callbackURL: '/auth/facebook/callback',
+      profileFields: ['id', 'displayName', 'email'],
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        const existingUser = await User.findOne({ facebookID: profile.id });
+
+        if (!existingUser) {
+          const newUser = new User({
+            facebookID: profile.id,
+          });
+
+          const savedUser = await newUser.save();
+          done(null, savedUser);
+        }
+
+        done(null, existingUser);
+      } catch (error) {
+        console.error(error.message);
       }
     }
   )
