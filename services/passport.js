@@ -49,7 +49,10 @@ passport.use(
     {
       clientID: keys.facebookClientID,
       clientSecret: keys.facebookClientSecret,
-      callbackURL: '/auth/facebook/callback',
+      callbackURL:
+        process.env.NODE_ENV === 'production'
+          ? 'https://getfeedback-app.herokuapp.com/auth/facebook/callback'
+          : '/auth/facebook/callback',
       profileFields: ['id', 'displayName', 'email'],
       proxy: true,
     },
