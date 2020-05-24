@@ -21,9 +21,11 @@ mongoose
 
 const app = express();
 
+const daysInMilliseconds = 30 * 24 * 60 * 60 * 1000; //one day in milliseconds
+
 app.use(
   cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000, //30 days in milliseconds
+    maxAge: daysInMilliseconds,
     keys: [keys.cookieKey],
   })
 );
