@@ -1,15 +1,22 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import reducers from './context/reducers';
+
+const Header = () => <h2>Header</h2>;
+const Dashboard = () => <h2>Dashboard</h2>;
+const SurveyNew = () => <h2>SurveyNew</h2>;
+const Landing = () => <h2>Landing</h2>;
 
 const App = () => {
   return (
-    <React.Fragment>
-      <div>
-        <a href="/auth/google">Sign in With Google</a>
-      </div>
-      <div>
-        <a href="/auth/facebook">Sign in With Facebook</a>
-      </div>
-    </React.Fragment>
+    <div>
+      <BrowserRouter>
+        <Header />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/surveys" component={Dashboard} />
+        <Route exact path="/surveys/new" component={SurveyNew} />
+      </BrowserRouter>
+    </div>
   );
 };
 
