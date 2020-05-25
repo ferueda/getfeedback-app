@@ -9,14 +9,16 @@ const Landing = () => <h2>Landing</h2>;
 
 const App = () => {
   return (
-    <div>
+    <React.Fragment>
       <BrowserRouter>
         <Header />
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/surveys" component={Dashboard} />
-        <Route exact path="/surveys/new" component={SurveyNew} />
+        <main className="container mx-auto">
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/surveys" component={Dashboard} />
+          <Route exact path="/surveys/new" component={SurveyNew} />
+        </main>
       </BrowserRouter>
-    </div>
+    </React.Fragment>
   );
 };
 
