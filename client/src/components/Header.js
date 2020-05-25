@@ -32,7 +32,6 @@ const Header = () => {
     }
   };
 
-  console.log(user);
   return (
     <nav className="container max-w-full flex-auto justify-center bg-indigo-600 text-white shadow">
       <div className="flex justify-between content-center max-w-screen-lg mx-auto">
