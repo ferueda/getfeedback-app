@@ -7,7 +7,14 @@ import Header from './components/Header';
 import Landing from './components/Landing';
 import Payments from './components/Payments';
 
-const Dashboard = () => <Payments />;
+const Dashboard = () => {
+  return (
+    <div>
+      <h2>Dashboard</h2>
+      <Payments />
+    </div>
+  );
+};
 const SurveyNew = () => <h2>SurveyNew</h2>;
 
 const App = () => {

@@ -13,7 +13,7 @@ const CheckoutForm = () => {
   const elements = useElements();
 
   useEffect(() => {
-    const items = [{ id: 'xl-tshirt' }];
+    const items = { id: 'credits', amount: 10 };
 
     axios
       .post('http://localhost:5000/create-payment-intent', { items })
@@ -48,8 +48,6 @@ const CheckoutForm = () => {
       setSucceeded(true);
     }
   };
-
-  console.log(clientSecret);
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>

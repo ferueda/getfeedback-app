@@ -26,6 +26,7 @@ const app = express();
 const daysInMilliseconds = 30 * 24 * 60 * 60 * 1000; //one day in milliseconds
 
 app.use(cors());
+app.use(express.json());
 app.use(
   cookieSession({
     maxAge: daysInMilliseconds,
@@ -37,11 +38,18 @@ app.use(passport.session());
 
 app.use('/auth', authRoutes);
 
+const calculateOrderAmount = (items) => {
+  const prices = {
+    credits: 990,
+  };
+  return prices[items.id] * items.amount;
+};
+
 app.post('/create-payment-intent', async (req, res) => {
-  // const { items } = req.body;
+  const { items } = req.body;
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 500,
+    amount: calculateOrderAmount(items),
     currency: 'usd',
   });
 
