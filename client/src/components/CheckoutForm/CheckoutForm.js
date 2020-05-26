@@ -50,7 +50,7 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit} className="w-auto">
+    <form id="payment-form" onSubmit={handleSubmit} className="payment-form">
       <CardElement
         className="max-w-xs m-auto bg-gray-100 border border-solid border-gray-200 rounded py-3 px-2 shadow"
         id="card-element"

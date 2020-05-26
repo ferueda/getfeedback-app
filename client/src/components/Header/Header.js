@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
+import './Header.css';
 
 const Header = () => {
   const user = useContext(UserContext);
@@ -11,21 +12,17 @@ const Header = () => {
         return;
       case false:
         return (
-          <a
-            className="h-full flex items-center text-xl px-6 transition ease-out duration-200 hover:bg-indigo-700"
-            href="/auth/google"
-          >
-            Login with Google
-          </a>
+          <div className="main-av__menu__items">
+            <a className="" href="/auth/google">
+              Login with Google
+            </a>
+          </div>
         );
       default:
         return (
-          <div className="h-full flex items-center text-xl">
+          <div className="main-av__menu__items">
             {user._id}
-            <a
-              className="h-full flex items-center px-6 transition ease-out duration-200 hover:bg-indigo-700 ml-4"
-              href="/api/logout"
-            >
+            <a className="" href="/api/logout">
               Logout
             </a>
           </div>
@@ -34,12 +31,12 @@ const Header = () => {
   };
 
   return (
-    <nav className="container max-w-full flex-auto justify-center bg-indigo-600 text-white shadow">
-      <div className="flex justify-between content-center max-w-screen-lg mx-auto">
-        <Link to={user ? '/surveys' : '/'} className="text-3xl font-bold align-middle m-4">
+    <nav className="main-nav">
+      <div className="container main-nav__content-container content-center max-w-screen-lg mx-auto">
+        <Link to={user ? '/surveys' : '/'} className="main-nav__logo">
           getFeedback
         </Link>
-        <div className="flex items-center">{renderContent()}</div>
+        <div className="main-nav__menu">{renderContent()}</div>
       </div>
     </nav>
   );

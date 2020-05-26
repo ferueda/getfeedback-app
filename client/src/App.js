@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import './App.css';
 
 import UserContext from './context/UserContext';
 import useFetchUser from './hooks/useFetchUser';
@@ -12,7 +13,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h2 className="text-center mt-4 text-3xl">Dashboard</h2>
+      <h2 className="text-center">Dashboard</h2>
       <button onClick={() => setModalActive(true)}>Add Credits</button>
       {modalActive && <PaymentModal />}
     </div>
@@ -27,7 +28,7 @@ const App = () => {
     <UserContext.Provider value={user}>
       <BrowserRouter>
         <Header />
-        <main className="container max-w-screen-lg mx-auto">
+        <main className="container">
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={Dashboard} />
           <Route exact path="/surveys/new" component={SurveyNew} />
