@@ -50,10 +50,18 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-      <CardElement id="card-element" onChange={handleChange} />
-      <button disabled={processing || disabled || succeeded} id="submit">
-        <span id="button-text">{processing ? 'Loading' : 'Pay'}</span>
+    <form id="payment-form" onSubmit={handleSubmit} className="w-auto">
+      <CardElement
+        className="max-w-xs m-auto bg-gray-100 border border-solid border-gray-200 rounded py-3 px-2 shadow"
+        id="card-element"
+        onChange={handleChange}
+      />
+      <button
+        disabled={processing || disabled || succeeded}
+        id="submit"
+        className="block m-auto text-white rounded py-3 px-6 mt-3 bg-indigo-500 hover:bg-indigo-700 transition ease-out duration-200"
+      >
+        {processing ? 'Loading' : 'Buy Credits'}
       </button>
       {error && (
         <div className="card-error" role="alert">

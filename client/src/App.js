@@ -10,7 +10,7 @@ import Payments from './components/Payments';
 const Dashboard = () => {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2 className="text-center mt-4 text-3xl">Dashboard</h2>
       <Payments />
     </div>
   );
