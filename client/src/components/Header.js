@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import UserContext from '../context/UserContext';
 
 const Header = () => {
@@ -35,9 +36,9 @@ const Header = () => {
   return (
     <nav className="container max-w-full flex-auto justify-center bg-indigo-600 text-white shadow">
       <div className="flex justify-between content-center max-w-screen-lg mx-auto">
-        <a className="text-3xl font-bold align-middle m-4" href="/">
+        <Link to={user ? '/surveys' : '/'} className="text-3xl font-bold align-middle m-4">
           getFeedback
-        </a>
+        </Link>
         <div className="flex items-center">{renderContent()}</div>
       </div>
     </nav>

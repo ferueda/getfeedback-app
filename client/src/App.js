@@ -4,10 +4,11 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import UserContext from './context/UserContext';
 import useFetchUser from './hooks/useFetchUser';
 import Header from './components/Header';
+import Landing from './components/Landing';
+import Payments from './components/Payments';
 
-const Dashboard = () => <h2>Dashboard</h2>;
+const Dashboard = () => <Payments />;
 const SurveyNew = () => <h2>SurveyNew</h2>;
-const Landing = () => <h2>Landing</h2>;
 
 const App = () => {
   const [user, dispatchUserFetch] = useFetchUser(null);
