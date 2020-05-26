@@ -5,7 +5,7 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 const CheckoutForm = () => {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
-  const [processing, setProcessing] = useState('');
+  const [processing, setProcessing] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState('');
 
@@ -56,22 +56,31 @@ const CheckoutForm = () => {
         id="card-element"
         onChange={handleChange}
       />
-      <button
-        disabled={processing || disabled || succeeded}
-        id="submit"
-        className="block m-auto text-white rounded py-3 px-6 mt-3 bg-indigo-500 hover:bg-indigo-700 transition ease-out duration-200"
-      >
-        {processing ? 'Loading' : 'Buy Credits'}
-      </button>
       {error && (
-        <div className="card-error" role="alert">
+        <div className="card-error text-center" role="alert">
           {error}
         </div>
       )}
-      <p className={succeeded ? 'result-message' : 'result-message hidden'}>
+      <p className={succeeded ? 'result-message text-center' : 'result-message hidden'}>
         Payment succeeded, see the result in your
         <a href={`https://dashboard.stripe.com/test/payments`}> Stripe dashboard.</a> Refresh the page to pay again.
       </p>
+      {processing || disabled || succeeded ? (
+        <button
+          disabled
+          className="block m-auto text-white border border-solid border-white rounded py-3 px-6 mt-3 bg-indigo-700 bg-opacity-50 outline-none cursor-not-allowed"
+        >
+          {processing ? 'Loading' : succeeded ? 'Success' : 'Buy Credits'}
+        </button>
+      ) : (
+        <button
+          disabled={processing || disabled || succeeded}
+          id="submit"
+          className="block m-auto text-white border border-solid border-white rounded py-3 px-6 mt-3 bg-indigo-500 hover:bg-indigo-700 outline-none transition ease-out duration-200"
+        >
+          Buy Credits
+        </button>
+      )}
     </form>
   );
 };

@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import UserContext from './context/UserContext';
 import useFetchUser from './hooks/useFetchUser';
-import Header from './components/Header';
-import Landing from './components/Landing';
-import Payments from './components/Payments';
+import Header from './components/Header/Header';
+import Landing from './components/Landing/Landing';
+import PaymentModal from './components/PaymentModal/PaymentModal';
 
 const Dashboard = () => {
+  const [modalActive, setModalActive] = useState(false);
+
   return (
     <div>
       <h2 className="text-center mt-4 text-3xl">Dashboard</h2>
-      <Payments />
+      <button onClick={() => setModalActive(true)}>Add Credits</button>
+      {modalActive && <PaymentModal />}
     </div>
   );
 };
