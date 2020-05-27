@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
+import './CheckoutForm.css';
+
 const CheckoutForm = () => {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
@@ -51,7 +53,23 @@ const CheckoutForm = () => {
 
   return (
     <form id="payment-form" onSubmit={handleSubmit} className="payment-form">
-      <CardElement className="" id="card-element" onChange={handleChange} />
+      <fieldset>
+        <div className="form__input-container">
+          <label htmlFor="name" className="form__label">
+            Name
+          </label>
+          <input type="string" id="name" placeholder="Jane Doe" className="form__input form__name" required />
+        </div>
+        <div className="form__input-container">
+          <label htmlFor="email" className="form__label">
+            Email
+          </label>
+          <input type="email" id="email" placeholder="janedoe@email.com" className="form__input form__email" required />
+        </div>
+      </fieldset>
+      <fieldset>
+        <CardElement className="form__card" id="card-element" onChange={handleChange} />
+      </fieldset>
       {error && (
         <div className="card-error text-center" role="alert">
           {error}

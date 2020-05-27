@@ -23,28 +23,28 @@
   transform: translateX(-50%) translateY(-50%);
   background-color: #fff;
   height: auto;
-  width: auto;
-  max-width: 33%;
-  min-width: 20rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  width: 20rem;
+  box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.1);
   z-index: 102;
   border-radius: 3px;
 }
 
 .modal__header {
-  background-color: rgb(231, 231, 231);
+  background-color: #30336b;
   padding: 1rem 0;
-  margin-bottom: 1rem;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .modal__title {
   margin-bottom: 0.5rem;
   font-weight: 600;
+  color: #fff;
 }
 
 .modal__descp {
   font-size: 0.9rem;
-  color: #535c68;
+  color: #cfd0ee;
 }
 
 .modal__close-btn {
@@ -55,10 +55,14 @@
   border: none;
   top: 5px;
   right: 1px;
-  color: #535c68;
+  color: #ffffff;
   transition: ease-out 0.2s;
 }
 
 .modal__close-btn:hover {
   color: rgb(218, 12, 53);
+}
+
+.modal__content {
+  padding: 1rem 1rem;
 }
