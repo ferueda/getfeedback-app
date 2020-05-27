@@ -34,6 +34,7 @@
 .modal__header {
   background-color: rgb(231, 231, 231);
   padding: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .modal__title {

@@ -9,15 +9,15 @@ import Landing from './components/Landing/Landing';
 import PaymentModal from './components/PaymentModal/PaymentModal';
 
 const Dashboard = () => {
-  const [modalActive, setModalActive] = useState(false);
+  const [modalIsVisible, setModalIsVisible] = useState(false);
 
   return (
     <div>
       <h2 className="text-center">Dashboard</h2>
-      <button onClick={() => setModalActive(true)} className="btn btn--active">
+      <button onClick={() => setModalIsVisible(true)} className="btn btn--active">
         Add Credits
       </button>
-      {modalActive && <PaymentModal />}
+      {modalIsVisible && <PaymentModal isVisible={modalIsVisible} setIsVisible={setModalIsVisible} />}
     </div>
   );
 };
