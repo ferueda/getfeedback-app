@@ -17,17 +17,19 @@ const PaymentModal = ({ isVisible, setIsVisible }) => {
 
   if (isVisible) {
     return (
-      <div role="container" id="modal-wrapper" className="modal-wrapper">
-        <div id="modal-backdrop" className="modal-backdrop" onClick={closeModal}>
-          <div id="modal-box" className="modal-box">
-            <header className="modal__header">
-              <h3 className="text-center modal__title">Secure Payment Process</h3>
-              <p className="modal__descp text-center">$5 for 5 credits</p>
-            </header>
-            <Elements stripe={promise}>
-              <CheckoutForm />
-            </Elements>
-          </div>
+      <div className="modal-wrapper">
+        <div className="modal-backdrop" onClick={closeModal} />
+        <div className="modal-box">
+          <header className="modal__header">
+            <h3 className="text-center modal__title">Secure Payment Process</h3>
+            <p className="modal__descp text-center">$5 for 5 credits</p>
+            <button className="modal__close-btn" onClick={closeModal}>
+              X
+            </button>
+          </header>
+          <Elements stripe={promise}>
+            <CheckoutForm />
+          </Elements>
         </div>
       </div>
     );

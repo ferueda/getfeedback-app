@@ -27,7 +27,7 @@
   max-width: 33%;
   min-width: 20rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-  z-index: 101;
+  z-index: 102;
   border-radius: 3px;
 }
 
@@ -45,4 +45,20 @@
 .modal__descp {
   font-size: 0.9rem;
   color: #535c68;
+}
+
+.modal__close-btn {
+  position: absolute;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  top: 5px;
+  right: 1px;
+  color: #535c68;
+  transition: ease-out 0.2s;
+}
+
+.modal__close-btn:hover {
+  color: rgb(218, 12, 53);
 }
