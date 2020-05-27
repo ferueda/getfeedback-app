@@ -21,7 +21,6 @@ const Header = () => {
       default:
         return (
           <div className="main-av__menu__items">
-            {user._id}
             <a className="" href="/api/logout">
               Logout
             </a>
@@ -32,7 +31,7 @@ const Header = () => {
 
   return (
     <nav className="main-nav">
-      <div className="container main-nav__content-container content-center max-w-screen-lg mx-auto">
+      <div className="container main-nav__content-container">
         <Link to={user ? '/surveys' : '/'} className="main-nav__logo">
           getFeedback
         </Link>

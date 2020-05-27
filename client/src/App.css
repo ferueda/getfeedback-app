@@ -56,3 +56,34 @@ img {
 .bg-gray-200 {
   background-color: #edf2f7;
 }
+
+.btn {
+  width: 10rem;
+  height: 2rem;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.btn--active {
+  cursor: pointer;
+  border: 1px solid #30336b;
+  transition: 0.2s ease-out;
+  background-color: #30336b;
+  color: #fff;
+}
+
+.btn--active:hover {
+  background-color: #282b5a;
+  border: 1px solid #282b5a;
+}
+
+.btn--disabled {
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #5e5f86;
+  background-color: #5e5f86;
+}
+
+.btn--disabled:hover {
+  cursor: not-allowed;
+}

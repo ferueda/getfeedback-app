@@ -2,6 +2,7 @@ import React, { Children } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
+import './PaymentModal.css';
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
@@ -13,9 +14,13 @@ const PaymentModal = () => {
   };
 
   return (
-    <div role="container" id="modal-wrapper" className="fixed inset-0 shadow">
-      <div id="modal-backdrop" className="fixed inset-0 z-50 bg-black bg-opacity-50">
-        <div id="modal-box" className="absolute w-1/4 h-56 bg-white" style={absCentered}>
+    <div role="container" id="modal-wrapper" className="modal-wrapper">
+      <div id="modal-backdrop" className="modal-backdrop">
+        <div id="modal-box" className="modal-box" style={absCentered}>
+          <header className="modal__header">
+            <h3 className="text-center modal__title">Payment Process</h3>
+            <p className="modal__descp text-center">$5 for 5 credits</p>
+          </header>
           <Elements stripe={promise}>
             <CheckoutForm />
           </Elements>

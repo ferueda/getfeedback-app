@@ -51,33 +51,22 @@ const CheckoutForm = () => {
 
   return (
     <form id="payment-form" onSubmit={handleSubmit} className="payment-form">
-      <CardElement
-        className="max-w-xs m-auto bg-gray-100 border border-solid border-gray-200 rounded py-3 px-2 shadow"
-        id="card-element"
-        onChange={handleChange}
-      />
+      <CardElement className="" id="card-element" onChange={handleChange} />
       {error && (
         <div className="card-error text-center" role="alert">
           {error}
         </div>
       )}
-      <p className={succeeded ? 'result-message text-center' : 'result-message hidden'}>
+      <p className={succeeded ? 'result-message' : 'result-message hidden'}>
         Payment succeeded, see the result in your
         <a href={`https://dashboard.stripe.com/test/payments`}> Stripe dashboard.</a> Refresh the page to pay again.
       </p>
       {processing || disabled || succeeded ? (
-        <button
-          disabled
-          className="block m-auto text-white border border-solid border-white rounded py-3 px-6 mt-3 bg-indigo-700 bg-opacity-50 outline-none cursor-not-allowed"
-        >
+        <button disabled className="">
           {processing ? 'Loading' : succeeded ? 'Success' : 'Buy Credits'}
         </button>
       ) : (
-        <button
-          disabled={processing || disabled || succeeded}
-          id="submit"
-          className="block m-auto text-white border border-solid border-white rounded py-3 px-6 mt-3 bg-indigo-500 hover:bg-indigo-700 outline-none transition ease-out duration-200"
-        >
+        <button disabled={processing || disabled || succeeded} id="submit" className="">
           Buy Credits
         </button>
       )}

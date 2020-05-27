@@ -14,7 +14,9 @@ const Dashboard = () => {
   return (
     <div>
       <h2 className="text-center">Dashboard</h2>
-      <button onClick={() => setModalActive(true)}>Add Credits</button>
+      <button onClick={() => setModalActive(true)} className="btn btn--active">
+        Add Credits
+      </button>
       {modalActive && <PaymentModal />}
     </div>
   );
