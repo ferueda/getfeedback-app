@@ -4,7 +4,7 @@ import UserContext from '../../context/UserContext';
 import './Header.css';
 
 const Header = () => {
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const renderContent = () => {
     switch (user) {

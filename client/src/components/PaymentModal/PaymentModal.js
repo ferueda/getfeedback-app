@@ -29,7 +29,7 @@ const PaymentModal = ({ isVisible, setIsVisible }) => {
           </header>
           <section className="modal__content">
             <Elements stripe={promise}>
-              <CheckoutForm />
+              <CheckoutForm credits={5} />
             </Elements>
           </section>
         </div>

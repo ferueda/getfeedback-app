@@ -27,7 +27,7 @@ const App = () => {
   const [user, dispatchUserFetch] = useFetchUser(null);
 
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider value={{ user, dispatchUserFetch }}>
       <BrowserRouter>
         <Header />
         <main className="container">

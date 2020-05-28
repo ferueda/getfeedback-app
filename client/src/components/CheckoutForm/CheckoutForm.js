@@ -1,15 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import UserContext from '../../context/UserContext';
 
 import './CheckoutForm.css';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ credits }) => {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState('');
+
+  //form state
+  const [formName, setFormName] = useState('');
+  const [formEmail, setFormEmail] = useState('');
+
+  const { dispatchUserFetch } = useContext(UserContext);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -48,6 +55,9 @@ const CheckoutForm = () => {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
+      dispatchUserFetch({
+        type: 'FETCH_USER',
+      });
     }
   };
 
@@ -58,13 +68,29 @@ const CheckoutForm = () => {
           <label htmlFor="name" className="form__label">
             Name
           </label>
-          <input type="string" id="name" placeholder="Jane Doe" className="form__input form__name" required />
+          <input
+            value={formName}
+            onChange={({ target }) => setFormName(target.value)}
+            type="string"
+            id="name"
+            placeholder="Jane Doe"
+            className="form__input form__name"
+            required
+          />
         </div>
         <div className="form__input-container">
           <label htmlFor="email" className="form__label">
             Email
           </label>
-          <input type="email" id="email" placeholder="janedoe@email.com" className="form__input form__email" required />
+          <input
+            value={formEmail}
+            onChange={({ target }) => setFormEmail(target.value)}
+            type="email"
+            id="email"
+            placeholder="janedoe@email.com"
+            className="form__input form__email"
+            required
+          />
         </div>
       </fieldset>
       <fieldset>
@@ -80,11 +106,11 @@ const CheckoutForm = () => {
         <a href={`https://dashboard.stripe.com/test/payments`}> Stripe dashboard.</a> Refresh the page to pay again.
       </p>
       {processing || disabled || succeeded ? (
-        <button disabled className="">
+        <button disabled className="btn btn--disabled">
           {processing ? 'Loading' : succeeded ? 'Success' : 'Buy Credits'}
         </button>
       ) : (
-        <button disabled={processing || disabled || succeeded} id="submit" className="">
+        <button disabled={processing || disabled || succeeded} id="submit" className="btn btn--active">
           Buy Credits
         </button>
       )}
