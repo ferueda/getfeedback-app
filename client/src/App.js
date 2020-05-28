@@ -6,14 +6,13 @@ import UserContext from './context/UserContext';
 import useFetchUser from './hooks/useFetchUser';
 import Header from './components/Header/Header';
 import Landing from './components/Landing/Landing';
+import Payment from './components/Payment/Payment';
 
 const Dashboard = () => {
   return (
     <div>
       <h2 className="text-center">Dashboard</h2>
-      <button onClick="" className="btn btn--active">
-        Add Credits
-      </button>
+      <Payment />
     </div>
   );
 };
