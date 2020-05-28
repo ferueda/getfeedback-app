@@ -7,7 +7,7 @@ const Payment = () => {
   const { dispatchUserFetch } = useContext(UserContext);
 
   const handleToken = async (token) => {
-    const res = await axios.post('/api/current_user', token);
+    const res = await axios.post('/api/stripe', token);
 
     dispatchUserFetch({
       type: 'FETCH_USER',
