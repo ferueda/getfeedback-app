@@ -1,9 +1,10 @@
 const billingRoutes = require('express').Router();
 const keys = require('../config/keys');
 const stripe = require('stripe')(keys.stripeSecretKey);
+const requireLogin = require('../middleware/requireLogin');
 require('../models/User');
 
-billingRoutes.post('/api/stripe', async (req, res) => {
+billingRoutes.post('/api/stripe', requireLogin, async (req, res) => {
   const charge = await stripe.charges.create({
     amount: 500,
     currency: 'usd',

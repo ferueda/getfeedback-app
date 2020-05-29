@@ -21,6 +21,7 @@ const Header = () => {
       default:
         return (
           <div className="main-av__menu__items">
+            <div className="header__credits">Credits: {user.credits} </div>
             <a className="" href="/api/logout">
               Logout
             </a>

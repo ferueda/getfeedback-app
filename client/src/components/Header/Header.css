@@ -45,3 +45,7 @@
   background-color: #282b5a;
   transition: ease-out 0.2s;
 }
+
+.header__credits {
+  margin: auto 0.5rem;
+}
