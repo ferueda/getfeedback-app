@@ -6,9 +6,11 @@ const passport = require('passport');
 const keys = require('./config/keys');
 
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 const authRoutes = require('./routes/authRoutes');
 const billingRoutes = require('./routes/billingRoutes');
+const surveyRoutes = require('./routes/surveyRoutes');
 
 mongoose
   .connect(keys.mongoURI, {
@@ -39,6 +41,7 @@ app.use(passport.session());
 
 app.use('/auth', authRoutes);
 app.use('/', billingRoutes);
+app.use('/api/surveys', surveyRoutes);
 
 app.get('/api/current_user', (req, res) => {
   res.send(req.user);
