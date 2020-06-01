@@ -7,8 +7,7 @@ import useFetchUser from './hooks/useFetchUser';
 import Header from './components/Header/Header';
 import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
-
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import SurveyNew from './components/surveys/SurveyNew';
 
 const App = () => {
   const [user, dispatchUserFetch] = useFetchUser(null);
