@@ -1,0 +1,21 @@
+.create-survey-btn {
+  background-color: #eb4d4b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  padding: 5px;
+  transition: ease-out 0.2s;
+}
+
+.create-survey-btn:hover {
+  transform: scale(1.1);
+}
+
+.survey-btn__container {
+  position: absolute;
+  bottom: 2rem;
+  right: 3rem;
+}

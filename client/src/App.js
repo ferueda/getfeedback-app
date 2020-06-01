@@ -6,15 +6,8 @@ import UserContext from './context/UserContext';
 import useFetchUser from './hooks/useFetchUser';
 import Header from './components/Header/Header';
 import Landing from './components/Landing/Landing';
-import Payment from './components/Payment/Payment';
+import Dashboard from './components/Dashboard/Dashboard';
 
-const Dashboard = () => {
-  return (
-    <div>
-      <h2 className="text-center">Dashboard</h2>
-    </div>
-  );
-};
 const SurveyNew = () => <h2>SurveyNew</h2>;
 
 const App = () => {
