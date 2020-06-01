@@ -48,4 +48,9 @@
 
 .header__credits {
   margin: auto 0.5rem;
+  cursor: pointer;
+}
+
+.header__credits:hover {
+  text-decoration: underline;
 }

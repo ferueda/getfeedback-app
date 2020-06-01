@@ -3,7 +3,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import UserContext from '../../context/UserContext';
 
-const Payment = () => {
+const Payment = ({ children }) => {
   const { dispatchUserFetch } = useContext(UserContext);
 
   const handleToken = async (token) => {
@@ -23,7 +23,7 @@ const Payment = () => {
       token={(token) => handleToken(token)}
       stripeKey={process.env.REACT_APP_STRIPE_KEY}
     >
-      <button className="btn btn--active">Add Credits</button>
+      {children}
     </StripeCheckout>
   );
 };

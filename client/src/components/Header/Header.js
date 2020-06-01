@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
+import Payment from '../Payment/Payment';
 import './Header.css';
 
 const Header = () => {
@@ -21,7 +22,9 @@ const Header = () => {
       default:
         return (
           <div className="main-av__menu__items">
-            <div className="header__credits">Credits: {user.credits} </div>
+            <div className="header__credits">
+              <Payment>Credits: {user.credits} </Payment>
+            </div>
             <a className="" href="/api/logout">
               Logout
             </a>
