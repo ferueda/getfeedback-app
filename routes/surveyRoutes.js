@@ -22,6 +22,7 @@ surveyRoutes.post('/', requireLogin, requireCredits, async (req, res) => {
   // survey.save();
 
   const mailer = new Mailer(survey, surveyTemplate(survey));
+  mailer.send();
 });
 
 module.exports = surveyRoutes;
