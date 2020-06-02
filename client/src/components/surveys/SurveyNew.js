@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SurveyForm from './SurveyForm';
 import SurveyReview from './SurveyReview';
-import SurveyContext from '../../context/UserContext';
+import SurveyContext from '../../context/SurveyContext';
 import useForm from '../../hooks/useForm';
 
 const SurveyNew = () => {

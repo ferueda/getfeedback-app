@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import SurveyContext from '../../context/UserContext';
+import SurveyContext from '../../context/SurveyContext';
 import './SurveyForm.css';
 
-const Field = ({ label, component = 'input', type = 'text', onBlur, name, placeholder, value, onChange, error }) => {
+const Field = ({ label, component = 'input', type = 'text', name, placeholder, value, onChange, error }) => {
   if (component === 'input') {
     return (
       <div className="form-field">

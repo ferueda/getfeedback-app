@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
-import SurveyContext from '../../context/UserContext';
+import SurveyContext from '../../context/SurveyContext';
+import UserContext from '../../context/UserContext';
+import axios from 'axios';
+import reducers from '../../context/reducers';
 import './SurveyReview.css';
 
 const ReviewField = ({ label, name, value }) => {
@@ -15,7 +18,18 @@ const ReviewField = ({ label, name, value }) => {
 
 const SurveyReview = ({ setShowReview }) => {
   const survey = useContext(SurveyContext);
+  const { dispatchUserFetch } = useContext(UserContext);
+
   const { title, subject, body, recipients } = survey.values;
+
+  const handleSubmit = async (surveyObject) => {
+    const res = await axios.post('/api/stripe', surveyObject);
+
+    dispatchUserFetch({
+      type: 'FETCH_USER',
+      payload: res.data,
+    });
+  };
 
   return (
     <div className="form-container">
@@ -30,7 +44,7 @@ const SurveyReview = ({ setShowReview }) => {
         <button onClick={() => setShowReview(false)} className="btn survey-goback">
           Go Back
         </button>
-        <button type="submit" className="btn btn--active survey__btn">
+        <button onClick={() => handleSubmit(survey.values)} type="submit" className="btn btn--active survey__btn">
           Send
         </button>
       </div>

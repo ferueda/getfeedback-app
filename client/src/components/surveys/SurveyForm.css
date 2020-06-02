@@ -1,9 +1,9 @@
 .form-container {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .form-title {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   text-align: center;
   font-weight: 500;
   font-size: 1.5rem;
@@ -37,7 +37,8 @@
 }
 
 .survey-btn-container {
-  margin-top: 5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
 }
