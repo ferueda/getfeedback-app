@@ -5,13 +5,13 @@ import SurveyContext from '../../context/SurveyContext';
 import useForm from '../../hooks/useForm';
 
 const SurveyNew = () => {
-  const [showReview, setShowReview] = useState(true);
+  const [showReview, setShowReview] = useState(false);
 
   const survey = useForm({
-    title: 'My first Survey',
-    subject: 'With your feedback, we become better',
-    body: 'Please help us improve giving us your sincere feedback',
-    recipients: 'fe.rueda@hotmail.com, fe.ruedaluque@gmail.com, fe.rueda@outlook.com',
+    title: '',
+    subject: '',
+    body: '',
+    recipients: '',
   });
 
   return (

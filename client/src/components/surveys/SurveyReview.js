@@ -23,7 +23,16 @@ const SurveyReview = ({ setShowReview }) => {
   const { title, subject, body, recipients } = survey.values;
 
   const handleSubmit = async (surveyObject) => {
-    const res = await axios.post('/api/stripe', surveyObject);
+    const res = await axios.post('/api/surveys', surveyObject);
+
+    survey.setValues({
+      title: '',
+      subject: '',
+      body: '',
+      recipients: '',
+    });
+
+    setShowReview(false);
 
     dispatchUserFetch({
       type: 'FETCH_USER',
