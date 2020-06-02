@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+const validate = () => {};
+
 const useForm = (initialState) => {
   const [values, setValues] = useState(initialState);
   const [errors, seterrors] = useState({});

@@ -1,18 +1,39 @@
+.form-container {
+  margin-top: 3rem;
+}
+
+.form-title {
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
 .form-field {
-  margin: 0.5rem auto;
+  margin: 1rem auto;
+  color: rgb(139, 139, 139);
+  font-weight: 500;
 }
 
 .form-field__input {
   display: block;
   width: 100%;
   height: 2rem;
-  margin: 0.5rem auto;
+  margin: 1rem auto 2rem auto;
   border: none;
-  border-bottom: #30336b 1px solid;
+  border-bottom: #c9cad3 3px solid;
   outline: none;
+  font-weight: 500;
+  font-size: 1.2rem;
+  transition: ease-out 0.2s;
+}
+
+.form-field__input:focus {
+  border-bottom: #30336b 3px solid;
 }
 
 .survey-btn-container {
+  margin-top: 5rem;
   display: flex;
   justify-content: space-between;
 }

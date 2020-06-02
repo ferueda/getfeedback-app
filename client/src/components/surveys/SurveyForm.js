@@ -32,7 +32,8 @@ const SurveyForm = () => {
   const {} = useContext(SurveyContext);
 
   return (
-    <div>
+    <div className="form-container">
+      <h2 className="form-title">New Survey</h2>
       <form onSubmit={handleSubmit}>
         <Field label="Survey Title" name="title" value={title} onChange={handleChange} />
         <Field label="Subject Line" name="subject" value={subject} onChange={handleChange} />
