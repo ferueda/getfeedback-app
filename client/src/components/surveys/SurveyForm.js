@@ -1,25 +1,33 @@
 import React, { useContext } from 'react';
 import SurveyContext from '../../context/UserContext';
+import useForm from '../../hooks/useForm';
 
-const Field = ({ type, name, placeholder, component }) => {
+const Field = ({ label, component = 'input', type = 'text', name, placeholder, value, onChange }) => {
   if (component === 'input') {
-    return <input type={type} name={name} placeholder={placeholder} />;
+    return (
+      <div className="form-field">
+        <label htmlFor={name}>{label}</label>
+        <input type={type} id={name} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+      </div>
+    );
   }
 
-  return;
+  return null;
 };
 
 const SurveyForm = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event.target);
-  };
+  const { handleSubmit, handleChange, values } = useForm({ title: '', subject: '', body: '', recipients: '' });
+  const { title, subject, body, recipients } = values;
 
   const {} = useContext(SurveyContext);
+
   return (
     <div>
-      <form onSubmit={(event) => handleSubmit(event)}>
-        <input type="text" name="surveyTitle" />
+      <form onSubmit={handleSubmit}>
+        <Field label="Survey Title" name="title" value={title} onChange={handleChange} />
+        <Field label="Subject Line" name="subject" value={subject} onChange={handleChange} />
+        <Field label="Email Body" name="body" value={body} onChange={handleChange} />
+        <Field label="Recipient List" name="recipients" value={recipients} onChange={handleChange} />
         <button type="submit">Submit</button>
       </form>
     </div>
