@@ -57,7 +57,6 @@ const useForm = (initialState) => {
   }, [errors, isSubmitting]);
 
   const handleChange = (event) => {
-    console.log(event.target.value);
     setValues({
       ...values,
       [event.target.name]: event.target.value,

@@ -1,0 +1,30 @@
+.survey-goback {
+  margin: 0;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #30336b;
+  color: #30336b;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.review-info-container {
+  border-radius: 3px;
+  border: 1px solid #30336b;
+  padding: 1rem;
+}
+
+.review-field-container {
+  background-color: rgba(236, 236, 236, 0.5);
+  padding: 0.5rem;
+  border-radius: 3px;
+}
+
+.review-content {
+  color: #30336b;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
