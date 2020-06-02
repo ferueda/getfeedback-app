@@ -1,13 +1,23 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import SurveyContext from '../../context/UserContext';
 import useForm from '../../hooks/useForm';
+import './SurveyForm.css';
 
 const Field = ({ label, component = 'input', type = 'text', name, placeholder, value, onChange }) => {
   if (component === 'input') {
     return (
       <div className="form-field">
         <label htmlFor={name}>{label}</label>
-        <input type={type} id={name} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+        <input
+          type={type}
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          className="form-field__input"
+        />
       </div>
     );
   }
@@ -28,7 +38,15 @@ const SurveyForm = () => {
         <Field label="Subject Line" name="subject" value={subject} onChange={handleChange} />
         <Field label="Email Body" name="body" value={body} onChange={handleChange} />
         <Field label="Recipient List" name="recipients" value={recipients} onChange={handleChange} />
-        <button type="submit">Submit</button>
+        <div className="survey-btn-container">
+          <Link to="/surveys" className="btn survey-cancel">
+            Cancel
+          </Link>
+
+          <button type="submit" className="btn btn--active survey__btn">
+            Next
+          </button>
+        </div>
       </form>
     </div>
   );
