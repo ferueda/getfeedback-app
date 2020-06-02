@@ -32,6 +32,10 @@
   border-bottom: #30336b 3px solid;
 }
 
+.error {
+  border-bottom: red 3px solid;
+}
+
 .survey-btn-container {
   margin-top: 5rem;
   display: flex;
