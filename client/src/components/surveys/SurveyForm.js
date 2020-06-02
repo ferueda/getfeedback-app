@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SurveyContext from '../../context/UserContext';
-import useForm from '../../hooks/useForm';
 import './SurveyForm.css';
 
 const Field = ({ label, component = 'input', type = 'text', onBlur, name, placeholder, value, onChange, error }) => {
@@ -25,22 +24,27 @@ const Field = ({ label, component = 'input', type = 'text', onBlur, name, placeh
   return null;
 };
 
-const SurveyForm = () => {
-  const { handleSubmit, handleChange, values, errors } = useForm({
-    title: '',
-    subject: '',
-    body: '',
-    recipients: '',
-  });
+const SurveyForm = ({ setShowReview }) => {
+  const { handleSubmit, handleChange, values, errors, isSubmitting } = useContext(SurveyContext);
 
   const { title, subject, body, recipients } = values;
 
-  const {} = useContext(SurveyContext);
+  useEffect(() => {
+    let isCancel = false;
+
+    if (Object.keys(errors).length === 0 && isSubmitting && !isCancel) {
+      setShowReview(true);
+    }
+
+    return () => {
+      isCancel = true;
+    };
+  }, [isSubmitting, errors, setShowReview]);
 
   return (
     <div className="form-container">
       <h2 className="form-title">New Survey</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <Field label="Survey Title" name="title" value={title} onChange={handleChange} error={errors.title} />
         <Field label="Subject Line" name="subject" value={subject} onChange={handleChange} error={errors.subject} />
         <Field label="Email Body" name="body" value={body} onChange={handleChange} error={errors.body} />

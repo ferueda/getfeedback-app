@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const validateEmails = (emails) => {
   const invalidEmails = emails
@@ -54,7 +54,7 @@ const useForm = (initialState) => {
         setIsSubmitting(false);
       }
     }
-  }, [errors]);
+  }, [errors, isSubmitting]);
 
   const handleChange = (event) => {
     console.log(event.target.value);
