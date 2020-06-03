@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
+import { withRouter } from 'react-router';
 import SurveyContext from '../../context/SurveyContext';
 import UserContext from '../../context/UserContext';
 import axios from 'axios';
-import reducers from '../../context/reducers';
 import './SurveyReview.css';
 
 const ReviewField = ({ label, name, value }) => {
@@ -16,13 +16,13 @@ const ReviewField = ({ label, name, value }) => {
   );
 };
 
-const SurveyReview = ({ setShowReview }) => {
+const SurveyReview = ({ setShowReview, history }) => {
   const survey = useContext(SurveyContext);
   const { dispatchUserFetch } = useContext(UserContext);
 
   const { title, subject, body, recipients } = survey.values;
 
-  const handleSubmit = async (surveyObject) => {
+  const handleSubmit = async (surveyObject, history) => {
     const res = await axios.post('/api/surveys', surveyObject);
 
     survey.setValues({
@@ -33,6 +33,7 @@ const SurveyReview = ({ setShowReview }) => {
     });
 
     setShowReview(false);
+    history.push('/surveys');
 
     dispatchUserFetch({
       type: 'FETCH_USER',
@@ -53,7 +54,11 @@ const SurveyReview = ({ setShowReview }) => {
         <button onClick={() => setShowReview(false)} className="btn survey-goback">
           Go Back
         </button>
-        <button onClick={() => handleSubmit(survey.values)} type="submit" className="btn btn--active survey__btn">
+        <button
+          onClick={() => handleSubmit(survey.values, history)}
+          type="submit"
+          className="btn btn--active survey__btn"
+        >
           Send
         </button>
       </div>
@@ -61,4 +66,4 @@ const SurveyReview = ({ setShowReview }) => {
   );
 };
 
-export default SurveyReview;
+export default withRouter(SurveyReview);
