@@ -40,6 +40,9 @@ surveyRoutes.post('/', requireLogin, requireCredits, async (req, res) => {
   }
 });
 
+surveyRoutes.get('/:surveyId/:choice', (req, res) => {
+  res.send('Thanks for your feedback!');
+});
 
 surveyRoutes.post('/webhooks', (req, res) => {
   const p = new Path('/api/surveys/:surveyId/:choice');
