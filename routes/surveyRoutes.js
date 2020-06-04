@@ -11,8 +11,9 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 
 const Survey = mongoose.model('surveys');
 
-surveyRoutes.get('/thanks', (req, res) => {
-  res.send('Thanks for voting!!');
+surveyRoutes.get('/', requireLogin, async (req, res) => {
+  const surveys = await Survey.find({ _user: req.user._id }).select({ recipients: false });
+  res.json(surveys);
 });
 
 surveyRoutes.post('/', requireLogin, requireCredits, async (req, res) => {
@@ -83,4 +84,5 @@ surveyRoutes.post('/webhooks', (req, res) => {
     })
     .value();
 });
+
 module.exports = surveyRoutes;
