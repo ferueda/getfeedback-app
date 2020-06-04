@@ -7,8 +7,10 @@ const authReducer = (state = null, action) => {
   }
 };
 
-const surveyReducer = (state, action) => {
+const surveyReducer = (state = [], action) => {
   switch (action.type) {
+    case 'FETCH_SURVEYS':
+      return action.payload;
     default:
       return state;
   }
@@ -16,5 +18,5 @@ const surveyReducer = (state, action) => {
 
 export default {
   auth: authReducer,
-  survey: surveyReducer,
+  surveys: surveyReducer,
 };
