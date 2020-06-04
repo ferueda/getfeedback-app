@@ -1,0 +1,12 @@
+.survey-container {
+  margin: 1rem auto;
+}
+
+.survey-card {
+  background-color: rgba(216, 216, 216, 0.5);
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin: 1rem auto;
+  color: #30336b;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}

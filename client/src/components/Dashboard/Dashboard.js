@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SurveyList from '../SurveyList/SurveyList';
+import useFetchSurveys from '../../hooks/useFetchSurveys';
 import './Dashboard.css';
 
 const Dashboard = () => {
+  const [surveys, dispatchFetchSurveys] = useFetchSurveys([]);
+
   return (
     <div>
-      <h2 className="text-center">Dashboard</h2>
+      <SurveyList surveys={surveys} />
       <div className="survey-btn__container">
         <Link to="/surveys/new" className="create-survey-btn">
           <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 448 448" width="30px">
