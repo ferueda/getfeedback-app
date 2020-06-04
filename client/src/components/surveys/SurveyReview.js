@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { withRouter } from 'react-router';
 import SurveyContext from '../../context/SurveyContext';
 import UserContext from '../../context/UserContext';
@@ -17,28 +17,35 @@ const ReviewField = ({ label, name, value }) => {
 };
 
 const SurveyReview = ({ setShowReview, history }) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const survey = useContext(SurveyContext);
   const { dispatchUserFetch } = useContext(UserContext);
 
   const { title, subject, body, recipients } = survey.values;
 
   const handleSubmit = async (surveyObject, history) => {
-    const res = await axios.post('/api/surveys', surveyObject);
+    setIsSubmitted(true);
+    try {
+      const res = await axios.post('/api/surveys', surveyObject);
 
-    survey.setValues({
-      title: '',
-      subject: '',
-      body: '',
-      recipients: '',
-    });
+      survey.setValues({
+        title: '',
+        subject: '',
+        body: '',
+        recipients: '',
+      });
 
-    setShowReview(false);
-    history.push('/surveys');
+      setShowReview(false);
+      history.push('/surveys');
 
-    dispatchUserFetch({
-      type: 'FETCH_USER',
-      payload: res.data,
-    });
+      dispatchUserFetch({
+        type: 'FETCH_USER',
+        payload: res.data,
+      });
+    } catch {
+      setIsSubmitted(false);
+    }
   };
 
   return (
@@ -55,11 +62,12 @@ const SurveyReview = ({ setShowReview, history }) => {
           Go Back
         </button>
         <button
+          disabled={isSubmitted}
           onClick={() => handleSubmit(survey.values, history)}
           type="submit"
-          className="btn btn--active survey__btn"
+          className={isSubmitted ? 'btn btn--active survey__btn disabled' : 'btn btn--active survey__btn'}
         >
-          Send
+          {isSubmitted ? 'Sending...' : 'Send'}
         </button>
       </div>
     </div>
